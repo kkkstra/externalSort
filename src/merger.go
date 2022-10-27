@@ -4,13 +4,14 @@ import "fmt"
 
 // 二路归并
 func mergeData2(tmpFile []string, threads int) {
-	fmt.Printf("")
+	fmt.Printf("result: merging...\n")
 	ins := make([]<-chan int32, threads)
 	for i, fileName := range tmpFile {
 		ins[i], _ = loadFile(fileName, 0, -1)
 	}
 	res := divideData(ins...)
 	writeData("result", res)
+	fmt.Printf("result: merged\n")
 }
 
 // 递归实现二路归并

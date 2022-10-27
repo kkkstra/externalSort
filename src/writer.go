@@ -15,6 +15,7 @@ func writeData(fileName string, in <-chan int32) {
 	}
 	defer file.Close()
 	for v := range in {
+		//fmt.Println(v)
 		var buf bytes.Buffer
 		binary.Write(&buf, binary.LittleEndian, v)
 		_, err = file.Write(buf.Bytes())

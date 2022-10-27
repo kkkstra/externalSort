@@ -20,7 +20,7 @@ func readData(fileName string, threads int) []string {
 	}
 	fileSize := stat.Size()                // 获取文件大小
 	chunkSize := fileSize / int64(threads) // 计算分块大小
-	chunkSize = ((chunkSize-1)/4 + 1) * 4  // 确保为数据类型大小的整数倍
+	chunkSize = (chunkSize - 1) / 4 * 4    // 确保为数据类型大小的整数倍
 	//fmt.Println(fileSize, chunkSize)
 
 	var offset int64
