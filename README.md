@@ -9,8 +9,8 @@ $ ./bin/go_build_externalSort_src_linux
 **Usage**
 
 ```shell
-$ ./bin/go_build_externalSort_src_linux -h
-Usage of ./bin/go_build_externalSort_src_linux:
+Usage of ./go_build_externalSort_src_linux:
+  -b    whether enable binary merge
   -f string
         the filename of the data file (default "data")
   -g    whether generate random data

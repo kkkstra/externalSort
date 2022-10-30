@@ -14,7 +14,7 @@ func generateData(fileName string, n int) {
 
 	// 生成随机数
 	p := randomSource(n)
-	writeData(fileName, p)
+	writeData(fileName, p, false)
 
 	fmt.Printf("Random data: generated. \n")
 }
@@ -24,7 +24,8 @@ func randomSource(count int) <-chan int32 {
 	out := make(chan int32)
 	go func() {
 		for i := 0; i < count; i++ {
-			v := rand.Int31()
+			v := rand.Int31()%100 + 1
+			//fmt.Printf("%d ", v)
 			out <- v
 		}
 		close(out)

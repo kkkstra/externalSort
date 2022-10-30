@@ -20,10 +20,10 @@ func internalSort(id int, in chan int32, count int) string {
 		}
 		close(out)
 	}()
-	
+
 	fileName := "data.tmp" + strconv.Itoa(id)
 	fmt.Printf("%s: created. \n", fileName)
-	writeData(fileName, out)
+	writeData(fileName, out, false)
 	fmt.Printf("%s: sorted. \n", fileName)
 	return fileName
 }

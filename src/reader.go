@@ -20,7 +20,8 @@ func readData(fileName string, threads int) []string {
 	}
 	fileSize := stat.Size()                // 获取文件大小
 	chunkSize := fileSize / int64(threads) // 计算分块大小
-	chunkSize = (chunkSize - 1) / 4 * 4    // 确保为数据类型大小的整数倍
+	b := chunkSize / 4
+	chunkSize = b * 4 // 确保为数据类型大小的整数倍
 	//fmt.Println(fileSize, chunkSize)
 
 	var offset int64
@@ -86,13 +87,13 @@ func loadFile(fileName string, offset int64, chunkSize int64) (chan int32, int) 
 }
 
 func readNextBytes(file *os.File, number int) []byte {
-	bytes := make([]byte, number)
-	_, err := file.Read(bytes)
+	b := make([]byte, number)
+	_, err := file.Read(b)
 	if err != nil {
 		panic(err)
 		return nil
 	}
-	return bytes
+	return b
 }
 
 func readTmpFile(fileName string) <-chan int32 {
